@@ -1,17 +1,17 @@
-import Book from "./book.js";
+import Book from './book.js';
 
 class Library {
   #name;
   #inventory = [];
-  #totalWords;
-  #wordCount;
+  //#totalWords;
+  //#wordCount;
 
   constructor(name) {
     this.setName(name);
   }
 
   setName(name) {
-    if (typeof name !== "string") {
+    if (typeof name !== 'string') {
       throw new Error();
     }
     name = name.trim();
@@ -33,7 +33,7 @@ class Library {
   addBookToLibrary(book) {
     if (!(book instanceof Book)) {
       throw new Error(
-        "Se le paso un input invalido a addBookToLibrary, el input debe ser una instancia de la clase Book"
+        'Se le paso un input invalido a addBookToLibrary, el input debe ser una instancia de la clase Book'
       );
     }
 

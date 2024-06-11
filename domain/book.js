@@ -23,16 +23,16 @@ class Book {
   }
 
   getWords() {
-    if (typeof this.#words !== "number" || isNaN(this.#words)) {
+    if (typeof this.#words !== 'number' || isNaN(this.#words)) {
       throw new Error(
-        "No se puede llamar a getWords sin antes definir una valor para la propiedad (setWords)"
+        'No se puede llamar a getWords sin antes definir una valor para la propiedad (setWords)'
       );
     }
     return this.#words;
   }
 
   setTitle(title) {
-    if (typeof title !== "string") {
+    if (typeof title !== 'string') {
       throw new Error();
     }
     title = title.trim();
@@ -43,18 +43,18 @@ class Book {
   }
 
   setAuthor(author) {
-    if (typeof author !== "string") {
+    if (typeof author !== 'string') {
       throw new Error();
     }
     author = author.trim();
     if (author.length === 0) {
-      author = "Anónimo";
+      author = 'Anónimo';
     }
     this.#author = author;
   }
 
   setPages(pages) {
-    if (typeof pages !== "number" || isNaN(pages)) {
+    if (typeof pages !== 'number' || isNaN(pages)) {
       throw new Error();
     }
     if (pages < 1) {
@@ -65,17 +65,17 @@ class Book {
   }
 
   setWords(words) {
-    if (typeof words !== "number" || isNaN(words)) {
-      throw new Error("setWords solo acepta números");
+    if (typeof words !== 'number' || isNaN(words)) {
+      throw new Error('setWords solo acepta números');
     }
 
     this.#words = words;
   }
 
   wordsPerPage() {
-    if (typeof this.#words !== "number" || isNaN(this.#words)) {
+    if (typeof this.#words !== 'number' || isNaN(this.#words)) {
       throw new Error(
-        "No se puede llamar a wordsPerPage sin antes haber provisto la cantidad de palabras del libro (setWords)"
+        'No se puede llamar a wordsPerPage sin antes haber provisto la cantidad de palabras del libro (setWords)'
       );
     }
 
@@ -84,7 +84,7 @@ class Book {
 
   toString() {
     return `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages}${
-      this.#words ? ` Numero de palabras: ${this.#words}` : ""
+      this.#words ? ` Numero de palabras: ${this.#words}` : ''
     }`;
   }
 }
