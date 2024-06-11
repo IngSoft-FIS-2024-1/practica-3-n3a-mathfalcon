@@ -1,10 +1,9 @@
 class Book {
-
   #title;
   #author;
   #pages;
   #words;
-  
+
   constructor(title, author, pages) {
     this.setTitle(title);
     this.setAuthor(author);
@@ -24,11 +23,16 @@ class Book {
   }
 
   getWords() {
-    // TODO
+    if (typeof this.#words !== "number" || isNaN(this.#words)) {
+      throw new Error(
+        "No se puede llamar a getWords sin antes definir una valor para la propiedad (setWords)"
+      );
+    }
+    return this.#words;
   }
 
   setTitle(title) {
-    if (typeof (title) !== 'string') {
+    if (typeof title !== "string") {
       throw new Error();
     }
     title = title.trim();
@@ -39,8 +43,8 @@ class Book {
   }
 
   setAuthor(author) {
-    if (typeof (author) !== 'string') {
-      throw new Error()
+    if (typeof author !== "string") {
+      throw new Error();
     }
     author = author.trim();
     if (author.length === 0) {
@@ -50,26 +54,38 @@ class Book {
   }
 
   setPages(pages) {
-    if (typeof (pages) !== 'number' || isNaN(pages)) {
-      throw new Error()
+    if (typeof pages !== "number" || isNaN(pages)) {
+      throw new Error();
     }
     if (pages < 1) {
-      throw new Error()
+      throw new Error();
     }
     pages = Math.trunc(pages);
     this.#pages = pages;
   }
 
-  setWords() {
-    // TODO
+  setWords(words) {
+    if (typeof words !== "number" || isNaN(words)) {
+      throw new Error("setWords solo acepta números");
+    }
+
+    this.#words = words;
   }
 
   wordsPerPage() {
-    // TODO
+    if (typeof this.#words !== "number" || isNaN(this.#words)) {
+      throw new Error(
+        "No se puede llamar a wordsPerPage sin antes haber provisto la cantidad de palabras del libro (setWords)"
+      );
+    }
+
+    return Math.round(this.#words / this.#pages);
   }
 
   toString() {
-    return `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages}`;
+    return `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages}${
+      this.#words ? ` Numero de palabras: ${this.#words}` : ""
+    }`;
   }
 }
 

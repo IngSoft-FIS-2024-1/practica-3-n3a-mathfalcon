@@ -1,7 +1,6 @@
-import Book from './book.js';
+import Book from "./book.js";
 
 class Library {
-
   #name;
   #inventory = [];
   #totalWords;
@@ -12,12 +11,12 @@ class Library {
   }
 
   setName(name) {
-    if (typeof (name) !== "string") {
-      throw new Error()
+    if (typeof name !== "string") {
+      throw new Error();
     }
     name = name.trim();
     if (name.length === 0) {
-      throw new Error()
+      throw new Error();
     }
     this.#name = name;
   }
@@ -31,6 +30,16 @@ class Library {
     this.#inventory.push(newBook);
   }
 
+  addBookToLibrary(book) {
+    if (!(book instanceof Book)) {
+      throw new Error(
+        "Se le paso un input invalido a addBookToLibrary, el input debe ser una instancia de la clase Book"
+      );
+    }
+
+    this.#inventory.push(book);
+  }
+
   getInventory() {
     return this.#inventory;
   }
@@ -40,7 +49,7 @@ class Library {
   }
 
   totalWords() {
-    // TODO
+    return this.#inventory.reduce((acc, curr) => acc + curr.getWords(), 0);
   }
 }
 
